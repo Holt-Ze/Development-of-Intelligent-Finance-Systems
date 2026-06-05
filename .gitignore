@@ -1,0 +1,9 @@
+.idea/
+
+10-源代码/frontend/node_modules/
+10-源代码/frontend/dist/
+
+10-源代码/backend/target/
+10-源代码/backend/backups/
+
+*.log
