@@ -1,0 +1,66 @@
+digraph use_case {
+  graph [label="学校部门财务管理系统用例图", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.9, ranksep=1.0];
+  node [fontname="Sans", fontsize=12];
+  edge [fontname="Sans", fontsize=11];
+
+  admin [shape=box, style="rounded,filled", fillcolor="#fff3cd", color="#c69214", label="<<Actor>>\n管理员"];
+  finance [shape=box, style="rounded,filled", fillcolor="#d9f2ff", color="#2b6cb0", label="<<Actor>>\n财务员"];
+
+  subgraph cluster_system {
+    label="财务管理系统";
+    color="#8aa8c8";
+    style="rounded";
+    fontsize=16;
+
+    { rank=same; user_mgmt; status_control; }
+    { rank=same; dept_mgmt; account_mgmt; income_cat; expense_cat; }
+    { rank=same; income_record; expense_record; query_filter; }
+    { rank=same; report_view; backup_restore; login; }
+
+    user_mgmt [shape=ellipse, label="用户管理"];
+    status_control [shape=ellipse, label="启用 / 停用主数据"];
+    dept_mgmt [shape=ellipse, label="部门管理"];
+    account_mgmt [shape=ellipse, label="账户管理"];
+    income_cat [shape=ellipse, label="收入类别管理"];
+    expense_cat [shape=ellipse, label="支出类别管理"];
+    income_record [shape=ellipse, label="收入记录管理"];
+    expense_record [shape=ellipse, label="支出记录管理"];
+    query_filter [shape=ellipse, label="条件查询与统计过滤"];
+    report_view [shape=ellipse, label="报表查看与仪表盘"];
+    backup_restore [shape=ellipse, label="数据备份与恢复"];
+    login [shape=ellipse, label="登录 / 退出"];
+
+    user_mgmt -> dept_mgmt -> income_record -> report_view [style=invis, weight=20];
+    status_control -> account_mgmt -> expense_record -> backup_restore [style=invis, weight=20];
+    income_cat -> query_filter -> login [style=invis, weight=20];
+    expense_cat -> query_filter [style=invis, weight=20];
+  }
+
+  admin -> login [arrowhead=none];
+  finance -> login [arrowhead=none];
+
+  admin -> user_mgmt [arrowhead=none];
+  admin -> dept_mgmt [arrowhead=none];
+  admin -> account_mgmt [arrowhead=none];
+  admin -> income_cat [arrowhead=none];
+  admin -> expense_cat [arrowhead=none];
+  admin -> income_record [arrowhead=none];
+  admin -> expense_record [arrowhead=none];
+  admin -> report_view [arrowhead=none];
+  admin -> backup_restore [arrowhead=none];
+  admin -> status_control [arrowhead=none];
+
+  finance -> income_record [arrowhead=none];
+  finance -> expense_record [arrowhead=none];
+  finance -> report_view [arrowhead=none];
+  finance -> query_filter [arrowhead=none];
+
+  income_record -> query_filter [style=dashed, xlabel="<<include>>"];
+  expense_record -> query_filter [style=dashed, xlabel="<<include>>"];
+  report_view -> query_filter [style=dashed, xlabel="<<include>>"];
+  dept_mgmt -> status_control [style=dashed, xlabel="<<include>>"];
+  account_mgmt -> status_control [style=dashed, xlabel="<<include>>"];
+  income_cat -> status_control [style=dashed, xlabel="<<include>>"];
+  expense_cat -> status_control [style=dashed, xlabel="<<include>>"];
+  backup_restore -> login [style=dashed, xlabel="需要管理员身份"];
+}

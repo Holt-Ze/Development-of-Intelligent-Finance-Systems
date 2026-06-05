@@ -1,0 +1,52 @@
+digraph package_diagram {
+  graph [label="财务管理系统包图", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.65, ranksep=0.9];
+  node [shape=folder, fontname="Sans", fontsize=11, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  subgraph cluster_backend {
+    label="backend / com.classdesign.finance";
+    color="#93c5fd";
+    style="rounded";
+    config_pkg [label="config"];
+    controller_pkg [label="controller"];
+    service_pkg [label="service"];
+    mapper_pkg [label="mapper"];
+    entity_pkg [label="entity"];
+    dto_pkg [label="dto"];
+    vo_pkg [label="vo"];
+    common_pkg [label="common"];
+    enums_pkg [label="enums"];
+  }
+
+  subgraph cluster_frontend {
+    label="frontend / src";
+    color="#86efac";
+    style="rounded";
+    layout_pkg [label="layout"];
+    router_pkg [label="router"];
+    pages_pkg [label="pages"];
+    api_pkg [label="api"];
+    components_pkg [label="components"];
+    utils_pkg [label="utils"];
+    styles_pkg [label="styles"];
+  }
+
+  router_pkg -> layout_pkg [label="装配"];
+  router_pkg -> pages_pkg [label="路由到"];
+  pages_pkg -> api_pkg [label="调用"];
+  pages_pkg -> components_pkg [label="复用"];
+  pages_pkg -> utils_pkg [label="认证状态"];
+  layout_pkg -> styles_pkg [label="应用样式"];
+
+  controller_pkg -> dto_pkg [label="接收"];
+  controller_pkg -> service_pkg [label="调用"];
+  controller_pkg -> common_pkg [label="统一响应"];
+  service_pkg -> mapper_pkg [label="访问"];
+  service_pkg -> entity_pkg [label="操作"];
+  service_pkg -> vo_pkg [label="返回"];
+  service_pkg -> common_pkg [label="业务异常"];
+  service_pkg -> enums_pkg [style=dashed, label="状态/角色"];
+  mapper_pkg -> entity_pkg [label="映射"];
+  config_pkg -> controller_pkg [style=dashed, label="拦截/异常/跨域"];
+  api_pkg -> controller_pkg [style=dashed, label="HTTP 接口契约"];
+}

@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1050">
+  <defs>
+    <style>
+      .title { font: 700 30px sans-serif; fill: #0f172a; }
+      .system { fill: none; stroke: #93c5fd; stroke-width: 2; }
+      .actor { fill: #fff; stroke: #475569; stroke-width: 2; rx: 10; }
+      .admin { fill: #fff7ed; stroke: #d97706; }
+      .finance { fill: #e0f2fe; stroke: #2563eb; }
+      .usecase { fill: #fff; stroke: #334155; stroke-width: 2; }
+      .text { font: 15px sans-serif; fill: #334155; }
+      .name { font: 700 16px sans-serif; fill: #111827; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; }
+      .include { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 8 6; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1700" height="1050" fill="#ffffff"/>
+  <text x="850" y="56" text-anchor="middle" class="title">学校部门财务管理系统用例图</text>
+
+  <rect x="220" y="100" width="1420" height="890" rx="18" class="system"/>
+  <text x="930" y="136" text-anchor="middle" class="title" style="font-size:24px;">财务管理系统</text>
+
+  <rect x="40" y="180" width="120" height="70" class="actor admin"/>
+  <text x="100" y="208" text-anchor="middle" class="text">&lt;&lt;Actor&gt;&gt;</text>
+  <text x="100" y="234" text-anchor="middle" class="name">管理员</text>
+
+  <rect x="40" y="760" width="120" height="70" class="actor finance"/>
+  <text x="100" y="788" text-anchor="middle" class="text">&lt;&lt;Actor&gt;&gt;</text>
+  <text x="100" y="814" text-anchor="middle" class="name">财务员</text>
+
+  <ellipse cx="420" cy="190" rx="95" ry="30" class="usecase"/>
+  <text x="420" y="196" text-anchor="middle" class="name">登录 / 退出</text>
+
+  <ellipse cx="420" cy="300" rx="95" ry="30" class="usecase"/>
+  <text x="420" y="306" text-anchor="middle" class="name">用户管理</text>
+
+  <ellipse cx="420" cy="410" rx="95" ry="30" class="usecase"/>
+  <text x="420" y="416" text-anchor="middle" class="name">部门管理</text>
+
+  <ellipse cx="420" cy="520" rx="95" ry="30" class="usecase"/>
+  <text x="420" y="526" text-anchor="middle" class="name">账户管理</text>
+
+  <ellipse cx="420" cy="630" rx="110" ry="30" class="usecase"/>
+  <text x="420" y="636" text-anchor="middle" class="name">收入类别管理</text>
+
+  <ellipse cx="420" cy="740" rx="110" ry="30" class="usecase"/>
+  <text x="420" y="746" text-anchor="middle" class="name">支出类别管理</text>
+
+  <ellipse cx="760" cy="410" rx="110" ry="30" class="usecase"/>
+  <text x="760" y="416" text-anchor="middle" class="name">启用 / 停用主数据</text>
+
+  <ellipse cx="1040" cy="330" rx="105" ry="30" class="usecase"/>
+  <text x="1040" y="336" text-anchor="middle" class="name">收入记录管理</text>
+
+  <ellipse cx="1040" cy="470" rx="105" ry="30" class="usecase"/>
+  <text x="1040" y="476" text-anchor="middle" class="name">支出记录管理</text>
+
+  <ellipse cx="1040" cy="610" rx="135" ry="30" class="usecase"/>
+  <text x="1040" y="616" text-anchor="middle" class="name">报表查看与仪表盘</text>
+
+  <ellipse cx="1040" cy="750" rx="120" ry="30" class="usecase"/>
+  <text x="1040" y="756" text-anchor="middle" class="name">数据备份与恢复</text>
+
+  <ellipse cx="1360" cy="430" rx="130" ry="30" class="usecase"/>
+  <text x="1360" y="436" text-anchor="middle" class="name">条件查询与统计过滤</text>
+
+  <path class="line" d="M160 215 H325"/>
+  <path class="line" d="M160 215 V300 H325"/>
+  <path class="line" d="M160 215 V410 H325"/>
+  <path class="line" d="M160 215 V520 H325"/>
+  <path class="line" d="M160 215 V630 H310"/>
+  <path class="line" d="M160 215 V740 H310"/>
+  <path class="line" d="M160 215 V690 H920"/>
+  <path class="line" d="M160 215 V330 H935"/>
+  <path class="line" d="M160 215 V470 H935"/>
+  <path class="line" d="M160 215 V610 H905"/>
+  <path class="line" d="M160 215 V750 H920"/>
+
+  <path class="line" d="M160 795 H935"/>
+  <path class="line" d="M160 795 V470 H935"/>
+  <path class="line" d="M160 795 V610 H905"/>
+  <path class="line" d="M160 795 V190 H325"/>
+
+  <path class="include" d="M515 410 H650 V410 H650 V410 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H650 H665" marker-end="url(#arrow)"/>
+  <text x="560" y="392" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M515 520 H665" marker-end="url(#arrow)"/>
+  <text x="560" y="502" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M530 630 H665" marker-end="url(#arrow)"/>
+  <text x="565" y="612" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M530 740 H665" marker-end="url(#arrow)"/>
+  <text x="565" y="722" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M1040 360 V420" marker-end="url(#arrow)"/>
+  <text x="940" y="394" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M1040 500 V570 H1230" marker-end="url(#arrow)"/>
+  <text x="1115" y="550" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M1175 610 H1230" marker-end="url(#arrow)"/>
+  <text x="1180" y="592" class="text">&lt;&lt;include&gt;&gt;</text>
+
+  <path class="include" d="M1160 750 H1260 V500 H1360" marker-end="url(#arrow)"/>
+  <text x="1176" y="732" class="text">需要管理员身份</text>
+</svg>

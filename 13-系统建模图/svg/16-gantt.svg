@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820">
+  <defs>
+    <style>
+      .title { font: 700 28px sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px sans-serif; fill: #475569; }
+      .grid { stroke: #cbd5e1; stroke-width: 1; }
+      .header { fill: #e2e8f0; }
+      .task { font: 14px sans-serif; fill: #0f172a; }
+      .week { font: 14px sans-serif; fill: #334155; font-weight: 700; }
+      .bar-a { fill: #60a5fa; }
+      .bar-b { fill: #34d399; }
+      .bar-c { fill: #f59e0b; }
+      .bar-d { fill: #f87171; }
+      .bar-e { fill: #a78bfa; }
+      .axis { stroke: #1e293b; stroke-width: 2; }
+      .note { font: 13px sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="820" fill="#ffffff" />
+  <text x="700" y="48" text-anchor="middle" class="title">项目甘特图</text>
+  <text x="700" y="76" text-anchor="middle" class="subtitle">对应计划书中的 4 周进度安排与里程碑</text>
+
+  <line x1="270" y1="120" x2="1270" y2="120" class="axis" />
+  <line x1="270" y1="120" x2="270" y2="720" class="axis" />
+
+  <g>
+    <rect x="270" y="120" width="250" height="50" class="header" />
+    <rect x="520" y="120" width="250" height="50" class="header" />
+    <rect x="770" y="120" width="250" height="50" class="header" />
+    <rect x="1020" y="120" width="250" height="50" class="header" />
+    <text x="395" y="152" text-anchor="middle" class="week">第 1 周</text>
+    <text x="645" y="152" text-anchor="middle" class="week">第 2 周</text>
+    <text x="895" y="152" text-anchor="middle" class="week">第 3 周</text>
+    <text x="1145" y="152" text-anchor="middle" class="week">第 4 周</text>
+  </g>
+
+  <g class="task">
+    <text x="60" y="205">1. 选题确认与范围收敛</text>
+    <text x="60" y="265">2. 需求分析与用例整理</text>
+    <text x="60" y="325">3. 数据库与接口设计</text>
+    <text x="60" y="385">4. 总体设计与 UML 建模</text>
+    <text x="60" y="445">5. 前后端骨架搭建</text>
+    <text x="60" y="505">6. 核心模块实现与联调</text>
+    <text x="60" y="565">7. 测试与缺陷修复</text>
+    <text x="60" y="625">8. 文档完善与答辩准备</text>
+    <text x="60" y="685">9. 结项归档</text>
+  </g>
+
+  <g>
+    <line x1="520" y1="120" x2="520" y2="720" class="grid" />
+    <line x1="770" y1="120" x2="770" y2="720" class="grid" />
+    <line x1="1020" y1="120" x2="1020" y2="720" class="grid" />
+    <line x1="1270" y1="120" x2="1270" y2="720" class="grid" />
+
+    <line x1="40" y1="180" x2="1270" y2="180" class="grid" />
+    <line x1="40" y1="240" x2="1270" y2="240" class="grid" />
+    <line x1="40" y1="300" x2="1270" y2="300" class="grid" />
+    <line x1="40" y1="360" x2="1270" y2="360" class="grid" />
+    <line x1="40" y1="420" x2="1270" y2="420" class="grid" />
+    <line x1="40" y1="480" x2="1270" y2="480" class="grid" />
+    <line x1="40" y1="540" x2="1270" y2="540" class="grid" />
+    <line x1="40" y1="600" x2="1270" y2="600" class="grid" />
+    <line x1="40" y1="660" x2="1270" y2="660" class="grid" />
+    <line x1="40" y1="720" x2="1270" y2="720" class="grid" />
+  </g>
+
+  <rect x="285" y="188" width="210" height="28" rx="8" class="bar-a" />
+  <rect x="285" y="248" width="210" height="28" rx="8" class="bar-a" />
+  <rect x="430" y="308" width="315" height="28" rx="8" class="bar-b" />
+  <rect x="430" y="368" width="315" height="28" rx="8" class="bar-b" />
+  <rect x="790" y="428" width="210" height="28" rx="8" class="bar-c" />
+  <rect x="790" y="488" width="420" height="28" rx="8" class="bar-c" />
+  <rect x="1035" y="548" width="210" height="28" rx="8" class="bar-d" />
+  <rect x="1035" y="608" width="210" height="28" rx="8" class="bar-e" />
+  <rect x="1110" y="668" width="135" height="28" rx="8" class="bar-d" />
+
+  <g class="note">
+    <text x="285" y="112">M1：第 1 周末完成需求基线</text>
+    <text x="520" y="112">M2：第 2 周末完成设计基线</text>
+    <text x="770" y="112">M3：第 3 周末形成演示版本</text>
+    <text x="1020" y="112">M4：第 4 周末完成测试与结项</text>
+  </g>
+</svg>
+

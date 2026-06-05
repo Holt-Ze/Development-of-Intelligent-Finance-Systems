@@ -1,0 +1,24 @@
+digraph flowchart {
+  graph [label="报表生成流程图", labelloc=t, fontsize=22, rankdir=TB, splines=ortho, nodesep=0.45, ranksep=0.6];
+  node [fontname="Sans", fontsize=11, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  start [shape=oval, fillcolor="#111827", fontcolor="white", label="开始"];
+  choose_type [shape=parallelogram, fillcolor="#dbeafe", label="选择周 / 月 / 年 / 自定义报表"];
+  input_filter [shape=parallelogram, fillcolor="#dbeafe", label="输入部门与时间条件"];
+  call_api [shape=box, style="rounded,filled", fillcolor="#dcfce7", label="调用 /reports/* 接口"];
+  valid_period [shape=diamond, fillcolor="#fef3c7", label="时间条件是否合法 ?"];
+  reject [shape=box, style="rounded,filled", fillcolor="#fee2e2", label="提示条件错误"];
+  sum_records [shape=box, style="rounded,filled", fillcolor="#d1fae5", label="汇总有效收入与支出记录"];
+  category_stats [shape=box, style="rounded,filled", fillcolor="#cffafe", label="按类别统计"];
+  dept_stats [shape=box, style="rounded,filled", fillcolor="#cffafe", label="按部门统计"];
+  trend_stats [shape=box, style="rounded,filled", fillcolor="#cffafe", label="按日 / 按月生成趋势"];
+  render_view [shape=box, style="rounded,filled", fillcolor="#e0f2fe", label="前端渲染指标卡、表格和图表"];
+  end [shape=oval, fillcolor="#111827", fontcolor="white", label="结束"];
+
+  start -> choose_type -> input_filter -> call_api -> valid_period;
+  valid_period -> reject [label="否"];
+  reject -> input_filter;
+  valid_period -> sum_records [label="是"];
+  sum_records -> category_stats -> dept_stats -> trend_stats -> render_view -> end;
+}

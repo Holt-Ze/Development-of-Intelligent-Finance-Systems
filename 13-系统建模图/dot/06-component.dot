@@ -1,0 +1,46 @@
+digraph component_diagram {
+  graph [label="学校部门财务管理系统组件图", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.65, ranksep=0.9];
+  node [shape=box, fontname="Sans", fontsize=11, style="rounded,filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  subgraph cluster_client {
+    label="客户端";
+    color="#93c5fd";
+    style="rounded";
+    browser [label="Web Browser"];
+    frontend [label="<<component>>\nVue 3 SPA"];
+    router [label="<<component>>\nVue Router / MainLayout"];
+    pages [label="<<component>>\n页面组件\nLogin / Dashboard / User /\nDepartment / Account /\nIncome / Expense / Report / Backup"];
+    api [label="<<component>>\nAPI 模块\nhttp.js / finance.js"];
+  }
+
+  subgraph cluster_server {
+    label="应用服务端";
+    color="#86efac";
+    style="rounded";
+    controllers [label="<<component>>\nREST Controllers\nAuth / User / Department /\nAccount / Category /\nIncome / Expense / Report / Backup"];
+    services [label="<<component>>\nBusiness Services\nAuthService / UserService /\nDepartmentService / AccountService /\nCategoryService / RecordService /\nReportService / BackupService"];
+    mappers [label="<<component>>\nMyBatis-Plus Mappers"];
+    config [label="<<component>>\nConfig & Common\nSecurityConfig / WebConfig /\nApiResponse / ExceptionHandler"];
+  }
+
+  subgraph cluster_data {
+    label="数据层";
+    color="#fcd34d";
+    style="rounded";
+    mysql [shape=cylinder, fillcolor="#f8fafc", label="MySQL 8"];
+    backup_dir [shape=box3d, fillcolor="#f8fafc", label="Backup Files\nbackend/backups/"];
+  }
+
+  browser -> frontend [label="加载页面"];
+  frontend -> router [label="路由控制"];
+  router -> pages [label="组织视图"];
+  pages -> api [label="发起 REST 请求"];
+  api -> controllers [label="JSON / HTTP"];
+  controllers -> services [label="调用业务方法"];
+  controllers -> config [style=dashed, label="统一响应/异常"];
+  services -> mappers [label="CRUD / SQL"];
+  services -> backup_dir [label="读写备份文件"];
+  mappers -> mysql [label="JDBC"];
+  services -> mysql [style=dashed, label="JdbcTemplate 统计/备份"];
+}

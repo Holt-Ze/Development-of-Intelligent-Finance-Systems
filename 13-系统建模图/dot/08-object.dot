@@ -1,0 +1,24 @@
+digraph object_diagram {
+  graph [label="财务管理系统对象图（示例运行时快照）", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.55, ranksep=0.9];
+  node [shape=record, fontname="Sans", fontsize=10, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569", arrowhead=none];
+
+  admin [label="{admin : SysUser|id = 1\\lusername = admin\\lrealName = 系统管理员\\lstatus = 1\\l}"];
+  admin_role [label="{adminRole : SysRole|id = 1\\lroleCode = ADMIN\\lroleName = 管理员\\l}"];
+  user_role [label="{link1 : SysUserRole|userId = 1\\lroleId = 1\\l}"];
+  dept [label="{dept3 : DeptInfo|id = 3\\ldeptCode = D003\\ldeptName = 信息工程学院\\lstatus = 1\\l}"];
+  account [label="{account2 : AccountInfo|id = 2\\laccountCode = A002\\laccountName = 学院活动经费户\\lstatus = 1\\l}"];
+  income_cat [label="{incomeCat1 : IncomeCategory|id = 1\\lcategoryCode = IC001\\lcategoryName = 经费拨入\\lstatus = 1\\l}"];
+  expense_cat [label="{expenseCat2 : ExpenseCategory|id = 2\\lcategoryCode = EC002\\lcategoryName = 活动支出\\lstatus = 1\\l}"];
+  income_rec [label="{income1 : IncomeRecord|recordNo = IN20260601001\\lamount = 20000.00\\loccurredOn = 2026-06-01\\loperatorName = 张会计\\lstatus = 1\\l}"];
+  expense_rec [label="{expense1 : ExpenseRecord|recordNo = EX20260602001\\lamount = 3200.00\\loccurredOn = 2026-06-02\\loperatorName = 张会计\\lstatus = 1\\l}"];
+
+  admin -> user_role [label="拥有"];
+  admin_role -> user_role [label="关联"];
+  dept -> income_rec [label="归属部门"];
+  account -> income_rec [label="使用账户"];
+  income_cat -> income_rec [label="收入类别"];
+  dept -> expense_rec [label="归属部门"];
+  account -> expense_rec [label="使用账户"];
+  expense_cat -> expense_rec [label="支出类别"];
+}

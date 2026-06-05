@@ -1,0 +1,32 @@
+digraph activity_diagram {
+  graph [label="财务记录录入活动图", labelloc=t, fontsize=22, rankdir=TB, splines=ortho, nodesep=0.45, ranksep=0.6];
+  node [fontname="Sans", fontsize=11, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  start [shape=circle, width=0.25, label="", fillcolor="#111827"];
+  open_page [shape=box, style="rounded,filled", fillcolor="#dbeafe", label="进入收入/支出记录页面"];
+  fill_form [shape=box, style="rounded,filled", fillcolor="#e0f2fe", label="填写部门、账户、类别、金额、日期、经办人"];
+  submit [shape=box, style="rounded,filled", fillcolor="#e0f2fe", label="提交保存请求"];
+  check_required [shape=diamond, fillcolor="#fef3c7", label="必填项完整且金额 > 0 ?"];
+  correct_form [shape=box, style="rounded,filled", fillcolor="#fee2e2", label="提示错误并返回表单修改"];
+  check_master [shape=diamond, fillcolor="#fef3c7", label="部门/账户/类别\n是否为有效状态 ?"];
+  reject_master [shape=box, style="rounded,filled", fillcolor="#fee2e2", label="拒绝保存并提示主数据已停用"];
+  generate_no [shape=box, style="rounded,filled", fillcolor="#dcfce7", label="生成业务编号"];
+  save_record [shape=box, style="rounded,filled", fillcolor="#dcfce7", label="写入 income_record / expense_record"];
+  refresh_list [shape=box, style="rounded,filled", fillcolor="#d1fae5", label="返回保存结果并刷新列表"];
+  ask_report [shape=diamond, fillcolor="#fef3c7", label="是否继续查看统计结果 ?"];
+  load_report [shape=box, style="rounded,filled", fillcolor="#cffafe", label="调用报表接口并展示趋势/汇总"];
+  end [shape=doublecircle, width=0.28, label="", fillcolor="#111827"];
+
+  start -> open_page -> fill_form -> submit -> check_required;
+  check_required -> correct_form [label="否"];
+  correct_form -> fill_form;
+  check_required -> check_master [label="是"];
+  check_master -> reject_master [label="否"];
+  reject_master -> fill_form;
+  check_master -> generate_no [label="是"];
+  generate_no -> save_record -> refresh_list -> ask_report;
+  ask_report -> load_report [label="是"];
+  ask_report -> end [label="否"];
+  load_report -> end;
+}

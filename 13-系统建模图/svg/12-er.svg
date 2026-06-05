@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 980">
+  <defs>
+    <style>
+      .title { font: 700 30px sans-serif; fill: #0f172a; }
+      .table { fill: #fff; stroke: #64748b; stroke-width: 2; }
+      .head { fill: #e2e8f0; }
+      .name { font: 700 16px sans-serif; fill: #111827; }
+      .text { font: 14px sans-serif; fill: #334155; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; }
+      .mult { font: 13px sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="980" fill="#ffffff"/>
+  <text x="900" y="52" text-anchor="middle" class="title">财务管理系统实体关系图（ER 图）</text>
+
+  <g>
+    <rect x="60" y="120" width="180" height="170" class="table"/>
+    <rect x="60" y="120" width="180" height="40" class="head"/>
+    <text x="150" y="146" text-anchor="middle" class="name">sys_user</text>
+    <text x="78" y="188" class="text">PK id</text>
+    <text x="78" y="212" class="text">username</text>
+    <text x="78" y="236" class="text">password</text>
+    <text x="78" y="260" class="text">real_name</text>
+    <text x="78" y="284" class="text">status</text>
+
+    <rect x="320" y="140" width="170" height="120" class="table"/>
+    <rect x="320" y="140" width="170" height="40" class="head"/>
+    <text x="405" y="166" text-anchor="middle" class="name">sys_role</text>
+    <text x="338" y="208" class="text">PK id</text>
+    <text x="338" y="232" class="text">role_code</text>
+    <text x="338" y="256" class="text">role_name</text>
+
+    <rect x="570" y="130" width="190" height="140" class="table"/>
+    <rect x="570" y="130" width="190" height="40" class="head"/>
+    <text x="665" y="156" text-anchor="middle" class="name">sys_user_role</text>
+    <text x="588" y="198" class="text">PK id</text>
+    <text x="588" y="222" class="text">FK user_id</text>
+    <text x="588" y="246" class="text">FK role_id</text>
+
+    <rect x="850" y="120" width="200" height="170" class="table"/>
+    <rect x="850" y="120" width="200" height="40" class="head"/>
+    <text x="950" y="146" text-anchor="middle" class="name">dept_info</text>
+    <text x="868" y="188" class="text">PK id</text>
+    <text x="868" y="212" class="text">dept_code</text>
+    <text x="868" y="236" class="text">dept_name</text>
+    <text x="868" y="260" class="text">leader_name</text>
+    <text x="868" y="284" class="text">status</text>
+
+    <rect x="1110" y="120" width="220" height="170" class="table"/>
+    <rect x="1110" y="120" width="220" height="40" class="head"/>
+    <text x="1220" y="146" text-anchor="middle" class="name">account_info</text>
+    <text x="1128" y="188" class="text">PK id</text>
+    <text x="1128" y="212" class="text">account_code</text>
+    <text x="1128" y="236" class="text">account_name</text>
+    <text x="1128" y="260" class="text">owner_unit</text>
+    <text x="1128" y="284" class="text">status</text>
+
+    <rect x="1390" y="120" width="180" height="150" class="table"/>
+    <rect x="1390" y="120" width="180" height="40" class="head"/>
+    <text x="1480" y="146" text-anchor="middle" class="name">income_category</text>
+    <text x="1408" y="188" class="text">PK id</text>
+    <text x="1408" y="212" class="text">category_code</text>
+    <text x="1408" y="236" class="text">category_name</text>
+
+    <rect x="1610" y="120" width="180" height="150" class="table"/>
+    <rect x="1610" y="120" width="180" height="40" class="head"/>
+    <text x="1700" y="146" text-anchor="middle" class="name">expense_category</text>
+    <text x="1628" y="188" class="text">PK id</text>
+    <text x="1628" y="212" class="text">category_code</text>
+    <text x="1628" y="236" class="text">category_name</text>
+
+    <rect x="780" y="560" width="250" height="200" class="table"/>
+    <rect x="780" y="560" width="250" height="40" class="head"/>
+    <text x="905" y="586" text-anchor="middle" class="name">income_record</text>
+    <text x="798" y="628" class="text">PK id</text>
+    <text x="798" y="652" class="text">record_no</text>
+    <text x="798" y="676" class="text">FK dept_id</text>
+    <text x="798" y="700" class="text">FK account_id</text>
+    <text x="798" y="724" class="text">FK category_id</text>
+    <text x="798" y="748" class="text">amount / occurred_on / status</text>
+
+    <rect x="1100" y="560" width="250" height="200" class="table"/>
+    <rect x="1100" y="560" width="250" height="40" class="head"/>
+    <text x="1225" y="586" text-anchor="middle" class="name">expense_record</text>
+    <text x="1118" y="628" class="text">PK id</text>
+    <text x="1118" y="652" class="text">record_no</text>
+    <text x="1118" y="676" class="text">FK dept_id</text>
+    <text x="1118" y="700" class="text">FK account_id</text>
+    <text x="1118" y="724" class="text">FK category_id</text>
+    <text x="1118" y="748" class="text">amount / occurred_on / status</text>
+
+    <rect x="1420" y="580" width="220" height="170" class="table"/>
+    <rect x="1420" y="580" width="220" height="40" class="head"/>
+    <text x="1530" y="606" text-anchor="middle" class="name">backup_record</text>
+    <text x="1438" y="648" class="text">PK id</text>
+    <text x="1438" y="672" class="text">backup_name</text>
+    <text x="1438" y="696" class="text">file_path</text>
+    <text x="1438" y="720" class="text">created_by / restored_at</text>
+  </g>
+
+  <path class="line" d="M150 290 V360 H665 V270"/>
+  <text x="310" y="344" class="mult">1 对多</text>
+  <path class="line" d="M405 260 V330 H665 V270"/>
+  <text x="505" y="314" class="mult">1 对多</text>
+
+  <path class="line" d="M950 290 V430 H905 V560"/>
+  <text x="956" y="420" class="mult">1 对多</text>
+  <path class="line" d="M950 290 V430 H1225 V560"/>
+  <text x="1098" y="420" class="mult">1 对多</text>
+
+  <path class="line" d="M1220 290 V410 H905 V560"/>
+  <text x="1228" y="400" class="mult">1 对多</text>
+  <path class="line" d="M1220 290 V410 H1225 V560"/>
+  <text x="1230" y="400" class="mult">1 对多</text>
+
+  <path class="line" d="M1480 270 V390 H905 V560"/>
+  <text x="1488" y="380" class="mult">1 对多</text>
+  <path class="line" d="M1700 270 V390 H1225 V560"/>
+  <text x="1708" y="380" class="mult">1 对多</text>
+</svg>

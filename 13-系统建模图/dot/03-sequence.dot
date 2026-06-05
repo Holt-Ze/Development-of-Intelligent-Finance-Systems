@@ -1,0 +1,62 @@
+digraph sequence_diagram {
+  graph [label="新增收入记录时序图", labelloc=t, fontsize=22, rankdir=TB, splines=polyline, nodesep=0.5, ranksep=0.55];
+  node [fontname="Sans", fontsize=10];
+  edge [fontname="Sans", fontsize=10, color="#334155"];
+
+  user [shape=box, style="rounded,filled", fillcolor="#fff7ed", label="财务员"];
+  page [shape=box, style="rounded,filled", fillcolor="#dbeafe", label="收入页面\nIncomePage.vue"];
+  controller [shape=box, style="rounded,filled", fillcolor="#d1fae5", label="IncomeController"];
+  service [shape=box, style="rounded,filled", fillcolor="#dcfce7", label="RecordService"];
+  master [shape=box, style="rounded,filled", fillcolor="#fef3c7", label="DepartmentService /\nAccountService /\nCategoryService"];
+  mapper [shape=box, style="rounded,filled", fillcolor="#fde68a", label="IncomeRecordMapper"];
+  db [shape=cylinder, style="filled", fillcolor="#f1f5f9", label="MySQL"];
+
+  { rank=same; user; page; controller; service; master; mapper; db; }
+  user -> page -> controller -> service -> master -> mapper -> db [style=invis, weight=100];
+
+  subgraph cluster_lifelines {
+    color=white;
+    forcelabels=true;
+  }
+
+  user1 [shape=point, width=0.01, label=""]; user2 [shape=point, width=0.01, label=""]; user3 [shape=point, width=0.01, label=""]; user4 [shape=point, width=0.01, label=""]; user5 [shape=point, width=0.01, label=""]; user6 [shape=point, width=0.01, label=""]; user7 [shape=point, width=0.01, label=""]; user8 [shape=point, width=0.01, label=""]; user9 [shape=point, width=0.01, label=""]; user10 [shape=point, width=0.01, label=""];
+  page1 [shape=point, width=0.01, label=""]; page2 [shape=point, width=0.01, label=""]; page3 [shape=point, width=0.01, label=""]; page4 [shape=point, width=0.01, label=""]; page5 [shape=point, width=0.01, label=""]; page6 [shape=point, width=0.01, label=""]; page7 [shape=point, width=0.01, label=""]; page8 [shape=point, width=0.01, label=""]; page9 [shape=point, width=0.01, label=""]; page10 [shape=point, width=0.01, label=""];
+  ctl1 [shape=point, width=0.01, label=""]; ctl2 [shape=point, width=0.01, label=""]; ctl3 [shape=point, width=0.01, label=""]; ctl4 [shape=point, width=0.01, label=""]; ctl5 [shape=point, width=0.01, label=""]; ctl6 [shape=point, width=0.01, label=""]; ctl7 [shape=point, width=0.01, label=""]; ctl8 [shape=point, width=0.01, label=""]; ctl9 [shape=point, width=0.01, label=""]; ctl10 [shape=point, width=0.01, label=""];
+  svc1 [shape=point, width=0.01, label=""]; svc2 [shape=point, width=0.01, label=""]; svc3 [shape=point, width=0.01, label=""]; svc4 [shape=point, width=0.01, label=""]; svc5 [shape=point, width=0.01, label=""]; svc6 [shape=point, width=0.01, label=""]; svc7 [shape=point, width=0.01, label=""]; svc8 [shape=point, width=0.01, label=""]; svc9 [shape=point, width=0.01, label=""]; svc10 [shape=point, width=0.01, label=""];
+  mst1 [shape=point, width=0.01, label=""]; mst2 [shape=point, width=0.01, label=""]; mst3 [shape=point, width=0.01, label=""]; mst4 [shape=point, width=0.01, label=""]; mst5 [shape=point, width=0.01, label=""]; mst6 [shape=point, width=0.01, label=""]; mst7 [shape=point, width=0.01, label=""]; mst8 [shape=point, width=0.01, label=""]; mst9 [shape=point, width=0.01, label=""]; mst10 [shape=point, width=0.01, label=""];
+  map1 [shape=point, width=0.01, label=""]; map2 [shape=point, width=0.01, label=""]; map3 [shape=point, width=0.01, label=""]; map4 [shape=point, width=0.01, label=""]; map5 [shape=point, width=0.01, label=""]; map6 [shape=point, width=0.01, label=""]; map7 [shape=point, width=0.01, label=""]; map8 [shape=point, width=0.01, label=""]; map9 [shape=point, width=0.01, label=""]; map10 [shape=point, width=0.01, label=""];
+  db1 [shape=point, width=0.01, label=""]; db2 [shape=point, width=0.01, label=""]; db3 [shape=point, width=0.01, label=""]; db4 [shape=point, width=0.01, label=""]; db5 [shape=point, width=0.01, label=""]; db6 [shape=point, width=0.01, label=""]; db7 [shape=point, width=0.01, label=""]; db8 [shape=point, width=0.01, label=""]; db9 [shape=point, width=0.01, label=""]; db10 [shape=point, width=0.01, label=""];
+
+  user -> user1 -> user2 -> user3 -> user4 -> user5 -> user6 -> user7 -> user8 -> user9 -> user10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  page -> page1 -> page2 -> page3 -> page4 -> page5 -> page6 -> page7 -> page8 -> page9 -> page10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  controller -> ctl1 -> ctl2 -> ctl3 -> ctl4 -> ctl5 -> ctl6 -> ctl7 -> ctl8 -> ctl9 -> ctl10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  service -> svc1 -> svc2 -> svc3 -> svc4 -> svc5 -> svc6 -> svc7 -> svc8 -> svc9 -> svc10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  master -> mst1 -> mst2 -> mst3 -> mst4 -> mst5 -> mst6 -> mst7 -> mst8 -> mst9 -> mst10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  mapper -> map1 -> map2 -> map3 -> map4 -> map5 -> map6 -> map7 -> map8 -> map9 -> map10 [style=dashed, arrowhead=none, color="#94a3b8"];
+  db -> db1 -> db2 -> db3 -> db4 -> db5 -> db6 -> db7 -> db8 -> db9 -> db10 [style=dashed, arrowhead=none, color="#94a3b8"];
+
+  { rank=same; user1; page1; ctl1; svc1; mst1; map1; db1; }
+  { rank=same; user2; page2; ctl2; svc2; mst2; map2; db2; }
+  { rank=same; user3; page3; ctl3; svc3; mst3; map3; db3; }
+  { rank=same; user4; page4; ctl4; svc4; mst4; map4; db4; }
+  { rank=same; user5; page5; ctl5; svc5; mst5; map5; db5; }
+  { rank=same; user6; page6; ctl6; svc6; mst6; map6; db6; }
+  { rank=same; user7; page7; ctl7; svc7; mst7; map7; db7; }
+  { rank=same; user8; page8; ctl8; svc8; mst8; map8; db8; }
+  { rank=same; user9; page9; ctl9; svc9; mst9; map9; db9; }
+  { rank=same; user10; page10; ctl10; svc10; mst10; map10; db10; }
+
+  user1 -> page1 [label="1. 填写表单并点击保存"];
+  page2 -> ctl2 [label="2. POST /incomes"];
+  ctl3 -> svc3 [label="3. createIncome(request)"];
+  svc4 -> mst4 [label="4. 校验部门 / 账户 / 类别有效性"];
+  mst5 -> svc5 [style=dashed, label="5. 校验通过"];
+  svc6 -> svc6 [label="6. 生成收入编号与创建时间"];
+  svc7 -> map7 [label="7. insert(record)"];
+  map8 -> db8 [label="8. INSERT income_record"];
+  db9 -> map9 [style=dashed, label="9. 返回主键"];
+  map9 -> svc9 [style=dashed, label="10. 插入成功"];
+  svc10 -> ctl10 [style=dashed, label="11. 返回 FinanceRecordVO"];
+  ctl10 -> page10 [style=dashed, label="12. ApiResponse.success(...)"];
+  page10 -> user10 [style=dashed, label="13. 刷新列表并提示保存成功"];
+}

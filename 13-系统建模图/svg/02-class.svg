@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100">
+  <defs>
+    <style>
+      .title { font: 700 30px sans-serif; fill: #0f172a; }
+      .group { fill: none; stroke: #93c5fd; stroke-width: 2; }
+      .group2 { fill: none; stroke: #86efac; stroke-width: 2; }
+      .box { fill: #fff; stroke: #64748b; stroke-width: 2; rx: 10; }
+      .head-entity { fill: #e2e8f0; }
+      .head-service { fill: #dcfce7; }
+      .name { font: 700 16px sans-serif; fill: #111827; }
+      .text { font: 14px sans-serif; fill: #334155; }
+      .small { font: 13px sans-serif; fill: #475569; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; }
+      .dash { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 8 6; }
+      .mult { font: 13px sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1800" height="1100" fill="#ffffff"/>
+  <text x="900" y="52" text-anchor="middle" class="title">学校部门财务管理系统类图</text>
+
+  <rect x="40" y="90" width="1720" height="380" rx="18" class="group2"/>
+  <text x="900" y="128" text-anchor="middle" class="title" style="font-size:24px;">核心服务类</text>
+
+  <rect x="70" y="160" width="240" height="130" class="box"/>
+  <rect x="70" y="160" width="240" height="40" class="head-service"/>
+  <text x="190" y="186" text-anchor="middle" class="name">AuthService</text>
+  <text x="88" y="224" class="text">+ login(request)</text>
+  <text x="88" y="248" class="text">- passwordMatches(raw, stored)</text>
+
+  <rect x="350" y="160" width="250" height="150" class="box"/>
+  <rect x="350" y="160" width="250" height="40" class="head-service"/>
+  <text x="475" y="186" text-anchor="middle" class="name">UserService</text>
+  <text x="368" y="224" class="text">+ list()</text>
+  <text x="368" y="248" class="text">+ create(request)</text>
+  <text x="368" y="272" class="text">+ update(id, request)</text>
+  <text x="368" y="296" class="text">+ updateStatus(id, status)</text>
+
+  <rect x="650" y="160" width="320" height="210" class="box"/>
+  <rect x="650" y="160" width="320" height="40" class="head-service"/>
+  <text x="810" y="186" text-anchor="middle" class="name">RecordService</text>
+  <text x="668" y="224" class="text">+ listIncomes(...)</text>
+  <text x="668" y="248" class="text">+ listExpenses(...)</text>
+  <text x="668" y="272" class="text">+ createIncome(request)</text>
+  <text x="668" y="296" class="text">+ updateIncome(id, request)</text>
+  <text x="668" y="320" class="text">+ createExpense(request)</text>
+  <text x="668" y="344" class="text">+ updateExpense(id, request)</text>
+
+  <rect x="1010" y="160" width="290" height="170" class="box"/>
+  <rect x="1010" y="160" width="290" height="40" class="head-service"/>
+  <text x="1155" y="186" text-anchor="middle" class="name">ReportService</text>
+  <text x="1028" y="224" class="text">+ weekly(week, deptId)</text>
+  <text x="1028" y="248" class="text">+ monthly(month, deptId)</text>
+  <text x="1028" y="272" class="text">+ yearly(year, deptId)</text>
+  <text x="1028" y="296" class="text">+ custom(startDate, endDate, deptId)</text>
+
+  <rect x="1340" y="160" width="250" height="150" class="box"/>
+  <rect x="1340" y="160" width="250" height="40" class="head-service"/>
+  <text x="1465" y="186" text-anchor="middle" class="name">BackupService</text>
+  <text x="1358" y="224" class="text">+ list()</text>
+  <text x="1358" y="248" class="text">+ createBackup(request)</text>
+  <text x="1358" y="272" class="text">+ download(id)</text>
+  <text x="1358" y="296" class="text">+ restore(id)</text>
+
+  <rect x="40" y="520" width="1720" height="530" rx="18" class="group"/>
+  <text x="900" y="558" text-anchor="middle" class="title" style="font-size:24px;">实体类</text>
+
+  <rect x="80" y="620" width="190" height="150" class="box"/>
+  <rect x="80" y="620" width="190" height="40" class="head-entity"/>
+  <text x="175" y="646" text-anchor="middle" class="name">SysUser</text>
+  <text x="98" y="688" class="text">+ id: Long</text>
+  <text x="98" y="712" class="text">+ username: String</text>
+  <text x="98" y="736" class="text">+ realName: String</text>
+  <text x="98" y="760" class="text">+ status: Integer</text>
+
+  <rect x="330" y="620" width="190" height="120" class="box"/>
+  <rect x="330" y="620" width="190" height="40" class="head-entity"/>
+  <text x="425" y="646" text-anchor="middle" class="name">SysRole</text>
+  <text x="348" y="688" class="text">+ id: Long</text>
+  <text x="348" y="712" class="text">+ roleCode: String</text>
+  <text x="348" y="736" class="text">+ roleName: String</text>
+
+  <rect x="580" y="620" width="190" height="130" class="box"/>
+  <rect x="580" y="620" width="190" height="40" class="head-entity"/>
+  <text x="675" y="646" text-anchor="middle" class="name">SysUserRole</text>
+  <text x="598" y="688" class="text">+ id: Long</text>
+  <text x="598" y="712" class="text">+ userId: Long</text>
+  <text x="598" y="736" class="text">+ roleId: Long</text>
+
+  <rect x="850" y="620" width="200" height="150" class="box"/>
+  <rect x="850" y="620" width="200" height="40" class="head-entity"/>
+  <text x="950" y="646" text-anchor="middle" class="name">DeptInfo</text>
+  <text x="868" y="688" class="text">+ id: Long</text>
+  <text x="868" y="712" class="text">+ deptCode: String</text>
+  <text x="868" y="736" class="text">+ deptName: String</text>
+  <text x="868" y="760" class="text">+ status: Integer</text>
+
+  <rect x="1110" y="620" width="210" height="150" class="box"/>
+  <rect x="1110" y="620" width="210" height="40" class="head-entity"/>
+  <text x="1215" y="646" text-anchor="middle" class="name">AccountInfo</text>
+  <text x="1128" y="688" class="text">+ id: Long</text>
+  <text x="1128" y="712" class="text">+ accountCode: String</text>
+  <text x="1128" y="736" class="text">+ accountName: String</text>
+  <text x="1128" y="760" class="text">+ status: Integer</text>
+
+  <rect x="1380" y="620" width="180" height="140" class="box"/>
+  <rect x="1380" y="620" width="180" height="40" class="head-entity"/>
+  <text x="1470" y="646" text-anchor="middle" class="name">IncomeCategory</text>
+  <text x="1398" y="688" class="text">+ id: Long</text>
+  <text x="1398" y="712" class="text">+ categoryCode</text>
+  <text x="1398" y="736" class="text">+ categoryName</text>
+
+  <rect x="1590" y="620" width="180" height="140" class="box"/>
+  <rect x="1590" y="620" width="180" height="40" class="head-entity"/>
+  <text x="1680" y="646" text-anchor="middle" class="name">ExpenseCategory</text>
+  <text x="1608" y="688" class="text">+ id: Long</text>
+  <text x="1608" y="712" class="text">+ categoryCode</text>
+  <text x="1608" y="736" class="text">+ categoryName</text>
+
+  <rect x="650" y="860" width="240" height="160" class="box"/>
+  <rect x="650" y="860" width="240" height="40" class="head-entity"/>
+  <text x="770" y="886" text-anchor="middle" class="name">IncomeRecord</text>
+  <text x="668" y="928" class="text">+ id: Long</text>
+  <text x="668" y="952" class="text">+ recordNo: String</text>
+  <text x="668" y="976" class="text">+ deptId / accountId / categoryId</text>
+  <text x="668" y="1000" class="text">+ amount / occurredOn / status</text>
+
+  <rect x="960" y="860" width="240" height="160" class="box"/>
+  <rect x="960" y="860" width="240" height="40" class="head-entity"/>
+  <text x="1080" y="886" text-anchor="middle" class="name">ExpenseRecord</text>
+  <text x="978" y="928" class="text">+ id: Long</text>
+  <text x="978" y="952" class="text">+ recordNo: String</text>
+  <text x="978" y="976" class="text">+ deptId / accountId / categoryId</text>
+  <text x="978" y="1000" class="text">+ amount / occurredOn / status</text>
+
+  <rect x="1290" y="860" width="240" height="140" class="box"/>
+  <rect x="1290" y="860" width="240" height="40" class="head-entity"/>
+  <text x="1410" y="886" text-anchor="middle" class="name">BackupRecord</text>
+  <text x="1308" y="928" class="text">+ id: Long</text>
+  <text x="1308" y="952" class="text">+ backupName / filePath / fileSize</text>
+  <text x="1308" y="976" class="text">+ createdBy / restoredAt</text>
+
+  <path class="line" d="M175 770 V840 H675 V750"/>
+  <text x="300" y="822" class="mult">1 对多</text>
+  <path class="line" d="M425 740 V820 H675 V750"/>
+  <text x="505" y="804" class="mult">1 对多</text>
+
+  <path class="line" d="M950 770 V820 H770 V860"/>
+  <text x="840" y="812" class="mult">1 对多</text>
+  <path class="line" d="M950 770 V820 H1080 V860"/>
+  <text x="1010" y="812" class="mult">1 对多</text>
+
+  <path class="line" d="M1215 770 V820 H770 V860"/>
+  <text x="1135" y="812" class="mult">1 对多</text>
+  <path class="line" d="M1215 770 V820 H1080 V860"/>
+  <text x="1240" y="812" class="mult">1 对多</text>
+
+  <path class="line" d="M1470 760 V800 H770 V860"/>
+  <text x="1420" y="792" class="mult">1 对多</text>
+  <path class="line" d="M1680 760 V800 H1080 V860"/>
+  <text x="1630" y="792" class="mult">1 对多</text>
+
+  <path class="dash" d="M190 290 V470 H175 V620" marker-end="url(#arrow)"/>
+  <text x="206" y="402" class="small">认证</text>
+  <path class="dash" d="M475 310 V470 H175 V620" marker-end="url(#arrow)"/>
+  <text x="360" y="448" class="small">维护用户</text>
+  <path class="dash" d="M810 370 V520 H770 V860" marker-end="url(#arrow)"/>
+  <text x="826" y="590" class="small">处理收入</text>
+  <path class="dash" d="M810 370 V520 H1080 V860" marker-end="url(#arrow)"/>
+  <text x="1036" y="590" class="small">处理支出</text>
+  <path class="dash" d="M1155 330 V520 H770 V860" marker-end="url(#arrow)"/>
+  <text x="1120" y="500" class="small">统计汇总</text>
+  <path class="dash" d="M1465 310 V520 H1410 V860" marker-end="url(#arrow)"/>
+  <text x="1482" y="500" class="small">维护备份</text>
+</svg>

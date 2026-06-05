@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .title { font: 700 28px sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px sans-serif; fill: #475569; }
+      .axis { stroke: #1e293b; stroke-width: 2; }
+      .grid { stroke: #cbd5e1; stroke-width: 1; stroke-dasharray: 4 4; }
+      .label { font: 13px sans-serif; fill: #334155; }
+      .legend { font: 14px sans-serif; fill: #0f172a; }
+      .ideal { fill: none; stroke: #94a3b8; stroke-width: 3; stroke-dasharray: 8 6; }
+      .down { fill: none; stroke: #dc2626; stroke-width: 4; }
+      .up { fill: none; stroke: #16a34a; stroke-width: 4; }
+      .point-down { fill: #dc2626; }
+      .point-up { fill: #16a34a; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff" />
+  <text x="600" y="48" text-anchor="middle" class="title">项目燃尽图 / 燃起图</text>
+  <text x="600" y="76" text-anchor="middle" class="subtitle">基于 4 周课程设计计划，纵轴为累计工作量百分比</text>
+
+  <line x1="120" y1="660" x2="1090" y2="660" class="axis" />
+  <line x1="120" y1="120" x2="120" y2="660" class="axis" />
+
+  <g>
+    <line x1="120" y1="552" x2="1090" y2="552" class="grid" />
+    <line x1="120" y1="444" x2="1090" y2="444" class="grid" />
+    <line x1="120" y1="336" x2="1090" y2="336" class="grid" />
+    <line x1="120" y1="228" x2="1090" y2="228" class="grid" />
+    <line x1="120" y1="120" x2="1090" y2="120" class="grid" />
+  </g>
+
+  <g class="label">
+    <text x="96" y="665">0</text>
+    <text x="85" y="557">20</text>
+    <text x="85" y="449">40</text>
+    <text x="85" y="341">60</text>
+    <text x="85" y="233">80</text>
+    <text x="74" y="125">100</text>
+
+    <text x="120" y="690" text-anchor="middle">第1周开始</text>
+    <text x="362.5" y="690" text-anchor="middle">第1周结束</text>
+    <text x="605" y="690" text-anchor="middle">第2周结束</text>
+    <text x="847.5" y="690" text-anchor="middle">第3周结束</text>
+    <text x="1090" y="690" text-anchor="middle">第4周结束</text>
+  </g>
+
+  <text x="25" y="390" transform="rotate(-90 25 390)" class="label">工作量（%）</text>
+  <text x="600" y="730" text-anchor="middle" class="label">项目时间线</text>
+
+  <polyline class="ideal" points="120,120 362.5,255 605,390 847.5,525 1090,660" />
+  <polyline class="down" points="120,120 362.5,255 605,444 847.5,579 1090,660" />
+  <polyline class="up" points="120,660 362.5,525 605,336 847.5,201 1090,120" />
+
+  <g>
+    <circle cx="120" cy="120" r="6" class="point-down" />
+    <circle cx="362.5" cy="255" r="6" class="point-down" />
+    <circle cx="605" cy="444" r="6" class="point-down" />
+    <circle cx="847.5" cy="579" r="6" class="point-down" />
+    <circle cx="1090" cy="660" r="6" class="point-down" />
+
+    <circle cx="120" cy="660" r="6" class="point-up" />
+    <circle cx="362.5" cy="525" r="6" class="point-up" />
+    <circle cx="605" cy="336" r="6" class="point-up" />
+    <circle cx="847.5" cy="201" r="6" class="point-up" />
+    <circle cx="1090" cy="120" r="6" class="point-up" />
+  </g>
+
+  <g class="legend">
+    <rect x="800" y="90" width="18" height="4" fill="#94a3b8" />
+    <text x="828" y="97">理想燃尽线</text>
+    <rect x="800" y="118" width="18" height="4" fill="#dc2626" />
+    <text x="828" y="125">实际剩余工作量（燃尽）</text>
+    <rect x="800" y="146" width="18" height="4" fill="#16a34a" />
+    <text x="828" y="153">累计完成工作量（燃起）</text>
+  </g>
+
+  <g class="label">
+    <text x="355" y="238">需求基线完成</text>
+    <text x="598" y="427">设计基线完成</text>
+    <text x="840" y="562">演示版本完成</text>
+    <text x="1004" y="642">项目结项</text>
+  </g>
+</svg>
+

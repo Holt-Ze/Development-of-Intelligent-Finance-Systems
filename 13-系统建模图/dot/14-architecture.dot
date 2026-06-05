@@ -1,0 +1,27 @@
+digraph architecture {
+  graph [label="财务管理系统架构图（容器视图）", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.75, ranksep=1.0];
+  node [fontname="Sans", fontsize=11, style="rounded,filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  admin [shape=box, fillcolor="#fff7ed", label="管理员"];
+  finance [shape=box, fillcolor="#dbeafe", label="财务员"];
+
+  subgraph cluster_system {
+    label="学校部门财务管理系统";
+    color="#94a3b8";
+    style="rounded";
+
+    browser [shape=box, fillcolor="#e0f2fe", label="Web 浏览器\n系统入口"];
+    spa [shape=box, fillcolor="#bfdbfe", label="前端容器\nVue 3 + Vite + Element Plus\n负责页面展示、路由和表单交互"];
+    backend [shape=box, fillcolor="#dcfce7", label="后端容器\nSpring Boot 3 + MyBatis-Plus\n负责认证、主数据、收支、报表、备份"];
+    db [shape=cylinder, fillcolor="#f8fafc", label="数据容器\nMySQL 8\n存储 10 张核心业务表"];
+    files [shape=box3d, fillcolor="#fef3c7", label="文件容器\n备份 SQL 文件目录"];
+  }
+
+  admin -> browser [label="使用"];
+  finance -> browser [label="使用"];
+  browser -> spa [label="加载前端资源"];
+  spa -> backend [label="REST / JSON"];
+  backend -> db [label="JDBC / SQL"];
+  backend -> files [label="文件读写"];
+}

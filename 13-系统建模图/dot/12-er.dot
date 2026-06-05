@@ -1,0 +1,79 @@
+digraph er_diagram {
+  graph [label="财务管理系统实体关系图（ER 图）", labelloc=t, fontsize=22, rankdir=TB, splines=polyline, nodesep=0.55, ranksep=0.9];
+  node [shape=plain, fontname="Sans", fontsize=10];
+  edge [fontname="Sans", fontsize=10, color="#475569", arrowhead=none];
+
+  SysUser [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0" COLSPAN="1"><B>sys_user</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>username<BR ALIGN="LEFT"/>password<BR ALIGN="LEFT"/>real_name<BR ALIGN="LEFT"/>phone<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  SysRole [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>sys_role</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>role_code<BR ALIGN="LEFT"/>role_name</TD></TR>
+    </TABLE>
+  >];
+  SysUserRole [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>sys_user_role</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>FK user_id<BR ALIGN="LEFT"/>FK role_id</TD></TR>
+    </TABLE>
+  >];
+  DeptInfo [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>dept_info</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>dept_code<BR ALIGN="LEFT"/>dept_name<BR ALIGN="LEFT"/>leader_name<BR ALIGN="LEFT"/>phone<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  AccountInfo [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>account_info</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>account_code<BR ALIGN="LEFT"/>account_name<BR ALIGN="LEFT"/>owner_unit<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  IncomeCategory [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>income_category</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>category_code<BR ALIGN="LEFT"/>category_name<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  ExpenseCategory [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>expense_category</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>category_code<BR ALIGN="LEFT"/>category_name<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  IncomeRecord [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>income_record</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>record_no<BR ALIGN="LEFT"/>FK dept_id<BR ALIGN="LEFT"/>FK account_id<BR ALIGN="LEFT"/>FK category_id<BR ALIGN="LEFT"/>amount<BR ALIGN="LEFT"/>occurred_on<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  ExpenseRecord [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>expense_record</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>record_no<BR ALIGN="LEFT"/>FK dept_id<BR ALIGN="LEFT"/>FK account_id<BR ALIGN="LEFT"/>FK category_id<BR ALIGN="LEFT"/>amount<BR ALIGN="LEFT"/>occurred_on<BR ALIGN="LEFT"/>status</TD></TR>
+    </TABLE>
+  >];
+  BackupRecord [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4" COLOR="#64748b">
+      <TR><TD BGCOLOR="#e2e8f0"><B>backup_record</B></TD></TR>
+      <TR><TD ALIGN="LEFT">PK id<BR ALIGN="LEFT"/>backup_name<BR ALIGN="LEFT"/>file_path<BR ALIGN="LEFT"/>file_size<BR ALIGN="LEFT"/>created_by<BR ALIGN="LEFT"/>restored_at</TD></TR>
+    </TABLE>
+  >];
+
+  { rank=same; SysUser; SysRole; SysUserRole; }
+  { rank=same; DeptInfo; AccountInfo; IncomeCategory; ExpenseCategory; }
+  { rank=same; IncomeRecord; ExpenseRecord; BackupRecord; }
+
+  SysUser -> SysUserRole [label="1 对多"];
+  SysRole -> SysUserRole [label="1 对多"];
+  DeptInfo -> IncomeRecord [label="1 对多"];
+  DeptInfo -> ExpenseRecord [label="1 对多"];
+  AccountInfo -> IncomeRecord [label="1 对多"];
+  AccountInfo -> ExpenseRecord [label="1 对多"];
+  IncomeCategory -> IncomeRecord [label="1 对多"];
+  ExpenseCategory -> ExpenseRecord [label="1 对多"];
+}

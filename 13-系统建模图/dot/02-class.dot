@@ -1,0 +1,125 @@
+digraph class_diagram {
+  graph [label="学校部门财务管理系统类图", labelloc=t, fontsize=22, rankdir=TB, splines=polyline, nodesep=0.55, ranksep=0.9];
+  node [shape=plain, fontname="Sans", fontsize=10];
+  edge [fontname="Sans", fontsize=10, color="#4a5568"];
+
+  subgraph cluster_entities {
+    label="实体类";
+    color="#93c5fd";
+    style="rounded";
+
+    SysUser [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>SysUser</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ username: String<BR ALIGN="LEFT"/>+ realName: String<BR ALIGN="LEFT"/>+ phone: String<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    SysRole [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>SysRole</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ roleCode: String<BR ALIGN="LEFT"/>+ roleName: String</TD></TR>
+      </TABLE>
+    >];
+    SysUserRole [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>SysUserRole</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ userId: Long<BR ALIGN="LEFT"/>+ roleId: Long</TD></TR>
+      </TABLE>
+    >];
+    DeptInfo [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>DeptInfo</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ deptCode: String<BR ALIGN="LEFT"/>+ deptName: String<BR ALIGN="LEFT"/>+ leaderName: String<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    AccountInfo [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>AccountInfo</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ accountCode: String<BR ALIGN="LEFT"/>+ accountName: String<BR ALIGN="LEFT"/>+ ownerUnit: String<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    IncomeCategory [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>IncomeCategory</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ categoryCode: String<BR ALIGN="LEFT"/>+ categoryName: String<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    ExpenseCategory [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>ExpenseCategory</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ categoryCode: String<BR ALIGN="LEFT"/>+ categoryName: String<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    IncomeRecord [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>IncomeRecord</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ recordNo: String<BR ALIGN="LEFT"/>+ deptId: Long<BR ALIGN="LEFT"/>+ accountId: Long<BR ALIGN="LEFT"/>+ categoryId: Long<BR ALIGN="LEFT"/>+ amount: BigDecimal<BR ALIGN="LEFT"/>+ occurredOn: LocalDate<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    ExpenseRecord [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>ExpenseRecord</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ recordNo: String<BR ALIGN="LEFT"/>+ deptId: Long<BR ALIGN="LEFT"/>+ accountId: Long<BR ALIGN="LEFT"/>+ categoryId: Long<BR ALIGN="LEFT"/>+ amount: BigDecimal<BR ALIGN="LEFT"/>+ occurredOn: LocalDate<BR ALIGN="LEFT"/>+ status: Integer</TD></TR>
+      </TABLE>
+    >];
+    BackupRecord [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#64748b">
+        <TR><TD BGCOLOR="#e2e8f0"><B>BackupRecord</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ id: Long<BR ALIGN="LEFT"/>+ backupName: String<BR ALIGN="LEFT"/>+ filePath: String<BR ALIGN="LEFT"/>+ fileSize: Long<BR ALIGN="LEFT"/>+ createdBy: String<BR ALIGN="LEFT"/>+ restoredAt: LocalDateTime</TD></TR>
+      </TABLE>
+    >];
+  }
+
+  subgraph cluster_services {
+    label="核心服务类";
+    color="#86efac";
+    style="rounded";
+
+    AuthService [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#16a34a">
+        <TR><TD BGCOLOR="#dcfce7"><B>AuthService</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ login(request)<BR ALIGN="LEFT"/>- passwordMatches(raw, stored)</TD></TR>
+      </TABLE>
+    >];
+    UserService [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#16a34a">
+        <TR><TD BGCOLOR="#dcfce7"><B>UserService</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ list()<BR ALIGN="LEFT"/>+ create(request)<BR ALIGN="LEFT"/>+ update(id, request)<BR ALIGN="LEFT"/>+ updateStatus(id, status)</TD></TR>
+      </TABLE>
+    >];
+    RecordService [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#16a34a">
+        <TR><TD BGCOLOR="#dcfce7"><B>RecordService</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ listIncomes(...)<BR ALIGN="LEFT"/>+ listExpenses(...)<BR ALIGN="LEFT"/>+ createIncome(request)<BR ALIGN="LEFT"/>+ updateIncome(id, request)<BR ALIGN="LEFT"/>+ createExpense(request)<BR ALIGN="LEFT"/>+ updateExpense(id, request)<BR ALIGN="LEFT"/>+ validate master data</TD></TR>
+      </TABLE>
+    >];
+    ReportService [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#16a34a">
+        <TR><TD BGCOLOR="#dcfce7"><B>ReportService</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ weekly(week, deptId)<BR ALIGN="LEFT"/>+ monthly(month, deptId)<BR ALIGN="LEFT"/>+ yearly(year, deptId)<BR ALIGN="LEFT"/>+ custom(startDate, endDate, deptId)<BR ALIGN="LEFT"/>+ dashboard()</TD></TR>
+      </TABLE>
+    >];
+    BackupService [label=<
+      <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5" COLOR="#16a34a">
+        <TR><TD BGCOLOR="#dcfce7"><B>BackupService</B></TD></TR>
+        <TR><TD ALIGN="LEFT">+ list()<BR ALIGN="LEFT"/>+ createBackup(request)<BR ALIGN="LEFT"/>+ download(id)<BR ALIGN="LEFT"/>+ restore(id)</TD></TR>
+      </TABLE>
+    >];
+  }
+
+  SysUser -> SysUserRole [arrowhead=none, label="1 对多"];
+  SysRole -> SysUserRole [arrowhead=none, label="1 对多"];
+  DeptInfo -> IncomeRecord [arrowhead=none, label="1 对多"];
+  DeptInfo -> ExpenseRecord [arrowhead=none, label="1 对多"];
+  AccountInfo -> IncomeRecord [arrowhead=none, label="1 对多"];
+  AccountInfo -> ExpenseRecord [arrowhead=none, label="1 对多"];
+  IncomeCategory -> IncomeRecord [arrowhead=none, label="1 对多"];
+  ExpenseCategory -> ExpenseRecord [arrowhead=none, label="1 对多"];
+
+  AuthService -> SysUser [style=dashed, label="认证"];
+  UserService -> SysUser [style=dashed, label="维护用户"];
+  RecordService -> IncomeRecord [style=dashed, label="处理收入"];
+  RecordService -> ExpenseRecord [style=dashed, label="处理支出"];
+  ReportService -> IncomeRecord [style=dashed, label="统计汇总"];
+  BackupService -> BackupRecord [style=dashed, label="维护备份"];
+}

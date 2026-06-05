@@ -1,0 +1,30 @@
+digraph communication_diagram {
+  graph [label="新增收入记录通信图", labelloc=t, fontsize=22, rankdir=LR, splines=polyline, nodesep=0.65, ranksep=1.0];
+  node [shape=box, fontname="Sans", fontsize=10, style="rounded,filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  actor [fillcolor="#fff7ed", label="actor: 财务员"];
+  page [fillcolor="#dbeafe", label="boundary: IncomePage"];
+  api [fillcolor="#bfdbfe", label="boundary: finance.js"];
+  controller [fillcolor="#d1fae5", label="control: IncomeController"];
+  service [fillcolor="#dcfce7", label="control: RecordService"];
+  dept_service [fillcolor="#fef3c7", label="entity service:\nDepartmentService"];
+  account_service [fillcolor="#fef3c7", label="entity service:\nAccountService"];
+  category_service [fillcolor="#fef3c7", label="entity service:\nCategoryService"];
+  mapper [fillcolor="#fde68a", label="entity:\nIncomeRecordMapper"];
+  db [shape=cylinder, fillcolor="#f8fafc", label="database:\nMySQL"];
+
+  actor -> page [label="1: 填写并提交表单"];
+  page -> api [label="2: createIncome(payload)"];
+  api -> controller [label="3: POST /incomes"];
+  controller -> service [label="4: createIncome(request)"];
+  service -> dept_service [label="5: getEnabled(deptId)"];
+  service -> account_service [label="6: getEnabled(accountId)"];
+  service -> category_service [label="7: getEnabledIncomeCategory(categoryId)"];
+  service -> mapper [label="8: insert(record)"];
+  mapper -> db [label="9: 写入 income_record"];
+  service -> controller [style=dashed, label="10: FinanceRecordVO"];
+  controller -> api [style=dashed, label="11: ApiResponse"];
+  api -> page [style=dashed, label="12: success(data)"];
+  page -> actor [style=dashed, label="13: 刷新列表并提示"];
+}

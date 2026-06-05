@@ -1,0 +1,21 @@
+digraph state_machine {
+  graph [label="财务记录对象状态机图", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.7, ranksep=1.0];
+  node [fontname="Sans", fontsize=11, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  start [shape=point, width=0.18, fillcolor="#111827", label=""];
+  editing [shape=Mrecord, fillcolor="#e0f2fe", label="{录入中|前端表单暂存状态}"];
+  active [shape=Mrecord, fillcolor="#dcfce7", label="{有效|status = 1\\l可查询、可统计、可编辑\\l}"];
+  disabled [shape=Mrecord, fillcolor="#fee2e2", label="{停用|status = 0\\l保留历史，不参与新增引用\\l}"];
+  end [shape=doublecircle, width=0.2, fillcolor="#111827", label=""];
+
+  start -> editing [label="开始新增"];
+  editing -> editing [label="校验失败 / 修改字段"];
+  editing -> active [label="提交且校验通过"];
+  active -> active [label="编辑保存"];
+  active -> active [label="报表统计读取"];
+  active -> disabled [label="停用"];
+  disabled -> active [label="重新启用"];
+  disabled -> disabled [label="历史查询"];
+  disabled -> end [label="课程版不物理删除", style=dashed];
+}

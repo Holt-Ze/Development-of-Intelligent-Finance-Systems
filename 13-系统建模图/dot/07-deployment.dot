@@ -1,0 +1,36 @@
+digraph deployment_diagram {
+  graph [label="学校部门财务管理系统部署图", labelloc=t, fontsize=22, rankdir=LR, splines=ortho, nodesep=0.8, ranksep=1.0];
+  node [fontname="Sans", fontsize=11, style="filled", fillcolor="white", color="#475569"];
+  edge [fontname="Sans", fontsize=10, color="#475569"];
+
+  user [shape=box, style="rounded,filled", fillcolor="#fff7ed", label="用户终端\n管理员 / 财务员\nChrome / Edge"];
+
+  subgraph cluster_web {
+    label="Web 前端节点";
+    color="#93c5fd";
+    style="rounded";
+    browser_cache [shape=box3d, fillcolor="#dbeafe", label="静态资源缓存\nHTML / JS / CSS"];
+    frontend_app [shape=box3d, fillcolor="#bfdbfe", label="Vue 3 前端应用\nVite 构建产物"];
+  }
+
+  subgraph cluster_app {
+    label="应用服务器";
+    color="#86efac";
+    style="rounded";
+    backend_jar [shape=box3d, fillcolor="#dcfce7", label="Spring Boot 3\nfinance-management.jar"];
+    backup_storage [shape=box3d, fillcolor="#ecfccb", label="备份目录\nbackend/backups/"];
+  }
+
+  subgraph cluster_db {
+    label="数据库服务器";
+    color="#fcd34d";
+    style="rounded";
+    mysql [shape=cylinder, fillcolor="#fefce8", label="MySQL 8\nfinance_management_system"];
+  }
+
+  user -> browser_cache [label="HTTPS 访问"];
+  browser_cache -> frontend_app [label="加载静态资源"];
+  frontend_app -> backend_jar [label="REST / JSON"];
+  backend_jar -> mysql [label="JDBC"];
+  backend_jar -> backup_storage [label="文件读写"];
+}

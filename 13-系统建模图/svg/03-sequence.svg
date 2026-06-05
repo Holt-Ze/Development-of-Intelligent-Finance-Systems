@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 980">
+  <defs>
+    <style>
+      .title { font: 700 30px sans-serif; fill: #0f172a; }
+      .box { fill: #fff; stroke: #475569; stroke-width: 2; rx: 10; }
+      .lifeline { stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 8 6; }
+      .msg { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .ret { stroke: #64748b; stroke-width: 2; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+      .name { font: 700 16px sans-serif; fill: #111827; }
+      .text { font: 15px sans-serif; fill: #334155; }
+      .small { font: 14px sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1800" height="980" fill="#ffffff"/>
+  <text x="900" y="56" text-anchor="middle" class="title">新增收入记录时序图</text>
+
+  <g>
+    <rect x="60" y="100" width="140" height="52" class="box" fill="#fff7ed"/>
+    <text x="130" y="132" text-anchor="middle" class="name">财务员</text>
+    <line x1="130" y1="152" x2="130" y2="900" class="lifeline"/>
+
+    <rect x="260" y="100" width="170" height="52" class="box" fill="#dbeafe"/>
+    <text x="345" y="125" text-anchor="middle" class="name">收入页面</text>
+    <text x="345" y="145" text-anchor="middle" class="small">IncomePage.vue</text>
+    <line x1="345" y1="152" x2="345" y2="900" class="lifeline"/>
+
+    <rect x="520" y="100" width="180" height="52" class="box" fill="#d1fae5"/>
+    <text x="610" y="132" text-anchor="middle" class="name">IncomeController</text>
+    <line x1="610" y1="152" x2="610" y2="900" class="lifeline"/>
+
+    <rect x="790" y="100" width="170" height="52" class="box" fill="#dcfce7"/>
+    <text x="875" y="132" text-anchor="middle" class="name">RecordService</text>
+    <line x1="875" y1="152" x2="875" y2="900" class="lifeline"/>
+
+    <rect x="1040" y="88" width="220" height="76" class="box" fill="#fef3c7"/>
+    <text x="1150" y="118" text-anchor="middle" class="name">DepartmentService</text>
+    <text x="1150" y="140" text-anchor="middle" class="name">AccountService</text>
+    <text x="1150" y="162" text-anchor="middle" class="name">CategoryService</text>
+    <line x1="1150" y1="164" x2="1150" y2="900" class="lifeline"/>
+
+    <rect x="1350" y="100" width="200" height="52" class="box" fill="#fde68a"/>
+    <text x="1450" y="132" text-anchor="middle" class="name">IncomeRecordMapper</text>
+    <line x1="1450" y1="152" x2="1450" y2="900" class="lifeline"/>
+
+    <rect x="1630" y="100" width="120" height="52" class="box" fill="#f1f5f9"/>
+    <text x="1690" y="132" text-anchor="middle" class="name">MySQL</text>
+    <line x1="1690" y1="152" x2="1690" y2="900" class="lifeline"/>
+  </g>
+
+  <path class="msg" d="M130 220 H345"/>
+  <text x="150" y="210" class="text">1. 填写表单并点击保存</text>
+
+  <path class="msg" d="M345 280 H610"/>
+  <text x="405" y="270" class="text">2. POST /incomes</text>
+
+  <path class="msg" d="M610 340 H875"/>
+  <text x="675" y="330" class="text">3. createIncome(request)</text>
+
+  <path class="msg" d="M875 400 H1150"/>
+  <text x="920" y="390" class="text">4. 校验部门 / 账户 / 类别有效性</text>
+
+  <path class="ret" d="M1150 460 H875"/>
+  <text x="1010" y="450" class="text">5. 校验通过</text>
+
+  <path class="msg" d="M875 520 H935 V560 H875" marker-end="url(#arrow)"/>
+  <text x="955" y="544" class="text">6. 生成收入编号与创建时间</text>
+
+  <path class="msg" d="M875 620 H1450"/>
+  <text x="1090" y="610" class="text">7. insert(record)</text>
+
+  <path class="msg" d="M1450 680 H1690"/>
+  <text x="1490" y="670" class="text">8. INSERT income_record</text>
+
+  <path class="ret" d="M1690 740 H1450"/>
+  <text x="1545" y="730" class="text">9. 返回主键</text>
+
+  <path class="ret" d="M1450 790 H875"/>
+  <text x="1120" y="780" class="text">10. 插入成功</text>
+
+  <path class="ret" d="M875 830 H610"/>
+  <text x="690" y="820" class="text">11. 返回 FinanceRecordVO</text>
+
+  <path class="ret" d="M610 860 H345"/>
+  <text x="390" y="850" class="text">12. ApiResponse.success(...)</text>
+
+  <path class="ret" d="M345 890 H130"/>
+  <text x="150" y="880" class="text">13. 刷新列表并提示保存成功</text>
+</svg>
