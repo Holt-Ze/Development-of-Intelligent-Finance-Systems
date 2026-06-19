@@ -1,4 +1,6 @@
 .idea/
+01-开题报告/
+__pycache__/
 
 10-源代码/frontend/node_modules/
 10-源代码/frontend/dist/
